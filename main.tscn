@@ -2,6 +2,12 @@
 
 [ext_resource type="Script" uid="uid://yfm6rtyf7leg" path="res://Scripts/GameManager.cs" id="1_ig7tw"]
 
+[sub_resource type="Curve2D" id="Curve2D_ig7tw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 1149, 405, 30.867683, 97.747665, -30.867683, -97.747665, 993, 311, 27.43794, 51.44614, -27.43794, -51.44614, 948, 152, 51.44614, -51.44614, -51.44614, 51.44614, 739, 141, 22.293327, -87.458435, -22.293327, 87.458435, 657, 349, 36.0123, -63.450237, -36.0123, 63.450237, 573, 570, 32.582554, 128.61534, -32.582554, -128.61534, 267, 553, 0, 0, 0, 0, 267, 553, 49.731266, 30.867683, -49.731266, -30.867683, 187, 289, 0, 0, 0, 0, 5, 290)
+}
+point_count = 10
+
 [node name="Main" type="Node2D" unique_id=1421050145]
 script = ExtResource("1_ig7tw")
 
@@ -30,3 +36,8 @@ offset_right = 1134.0
 offset_bottom = 49.0
 theme_override_font_sizes/font_size = 24
 text = "Zlato: 0"
+
+[node name="EnemyPath" type="Path2D" parent="." unique_id=1292956406]
+unique_name_in_owner = true
+position = Vector2(0, -22)
+curve = SubResource("Curve2D_ig7tw")
