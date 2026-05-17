@@ -37,7 +37,17 @@ offset_bottom = 49.0
 theme_override_font_sizes/font_size = 24
 text = "Zlato: 0"
 
+[node name="Button" type="Button" parent="UI/Panel" unique_id=2033308852]
+layout_mode = 0
+offset_left = 76.0
+offset_top = 16.0
+offset_right = 140.0
+offset_bottom = 46.0
+text = "Test spawn"
+
 [node name="EnemyPath" type="Path2D" parent="." unique_id=1292956406]
 unique_name_in_owner = true
-position = Vector2(0, -22)
+position = Vector2(0, -15)
 curve = SubResource("Curve2D_ig7tw")
+
+[connection signal="pressed" from="UI/Panel/Button" to="." method="OnSpawnButtonPressed"]
