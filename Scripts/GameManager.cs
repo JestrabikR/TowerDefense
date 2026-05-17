@@ -54,4 +54,15 @@ public partial class GameManager : Node2D
             GD.Print("Game Over!");
         }
     }
+
+    public bool TrySpendGold(int amount)
+    {
+        if (_gold >= amount)
+        {
+            _gold -= amount;
+            UpdateUi();
+            return true;
+        }
+        return false;
+    }
 }

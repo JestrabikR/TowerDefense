@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://eou4mq5n6oh3"]
+
+[node name="Tower" type="Node2D" unique_id=2020296602]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=401139632]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+color = Color(0.3527627, 0.55275166, 1, 1)

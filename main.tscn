@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cmjnhkpnq3l66"]
 
 [ext_resource type="Script" uid="uid://yfm6rtyf7leg" path="res://Scripts/GameManager.cs" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://dn45m64citsg0" path="res://Scripts/TowerSlot.cs" id="2_0xm2m"]
 
 [sub_resource type="Curve2D" id="Curve2D_ig7tw"]
 _data = {
@@ -49,5 +50,35 @@ text = "Test spawn"
 unique_name_in_owner = true
 position = Vector2(0, -15)
 curve = SubResource("Curve2D_ig7tw")
+
+[node name="SlotsContainer" type="Node2D" parent="." unique_id=193589526]
+
+[node name="Button" type="Button" parent="SlotsContainer" unique_id=100906256]
+offset_left = 118.0
+offset_top = 310.0
+offset_right = 168.0
+offset_bottom = 360.0
+script = ExtResource("2_0xm2m")
+
+[node name="Button2" type="Button" parent="SlotsContainer" unique_id=1407704678]
+offset_left = 393.0
+offset_top = 496.0
+offset_right = 443.0
+offset_bottom = 546.0
+script = ExtResource("2_0xm2m")
+
+[node name="Button4" type="Button" parent="SlotsContainer" unique_id=197265491]
+offset_left = 546.0
+offset_top = 276.0
+offset_right = 596.0
+offset_bottom = 326.0
+script = ExtResource("2_0xm2m")
+
+[node name="Button3" type="Button" parent="SlotsContainer" unique_id=2057377566]
+offset_left = 804.0
+offset_top = 180.0
+offset_right = 854.0
+offset_bottom = 230.0
+script = ExtResource("2_0xm2m")
 
 [connection signal="pressed" from="UI/Panel/Button" to="." method="OnSpawnButtonPressed"]
