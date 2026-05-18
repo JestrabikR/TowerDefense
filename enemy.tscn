@@ -6,6 +6,7 @@
 size = Vector2(32, 32)
 
 [node name="Enemy" type="PathFollow2D" unique_id=231052880]
+loop = false
 script = ExtResource("1_7k104")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=151105253]

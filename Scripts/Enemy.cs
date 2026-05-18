@@ -10,7 +10,7 @@ public partial class Enemy : PathFollow2D
     {
         Progress += _speed * (float)delta;
 
-        if (ProgressRatio >= 1.0f)
+        if (ProgressRatio >= 0.99f)
         {
             var gameManager = (GameManager)GetTree().CurrentScene;
             gameManager.LoseLife();
