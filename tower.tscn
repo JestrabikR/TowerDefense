@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://eou4mq5n6oh3"]
 
+[ext_resource type="Script" uid="uid://c3qpg88e38tar" path="res://Scripts/Tower.cs" id="1_k1sas"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnc73"]
+
 [node name="Tower" type="Node2D" unique_id=2020296602]
+script = ExtResource("1_k1sas")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=401139632]
 offset_left = -25.0
@@ -8,3 +13,12 @@ offset_top = -25.0
 offset_right = 25.0
 offset_bottom = 25.0
 color = Color(0.3527627, 0.55275166, 1, 1)
+
+[node name="RangeArea" type="Area2D" parent="." unique_id=999359949]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea" unique_id=1139461376]
+scale = Vector2(20, 20)
+shape = SubResource("CircleShape2D_dnc73")
+
+[node name="ShootTimer" type="Timer" parent="." unique_id=1409960191]
+autostart = true
