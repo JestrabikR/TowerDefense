@@ -7,7 +7,7 @@ Jedná se o minimalistickou 2D strategickou hru typu Tower Defense zjednodušeno
 *   **Pohyb nepřátel:** Nepřátelé se automaticky rodí (spawnují) na začátku trasy a putují k základně. Pokud dorazí do cíle, hráč ztrácí život.
 *   **Obrana:** Hráč kliknutím na volný stavební slot může postavit obrannou věž, pokud má dostatek zlata.
 *   **Útok věží:** Věž automaticky detekuje nejbližšího nepřítele ve svém dosahu a v pravidelných intervalech na něj střílí / uděluje mu poškození.
-*   **Konec hry:** Hra končí výhrou, pokud hráč porazí všechny vlny neptřátel. V opačném případě hra končí porážkou, pokud životy hráče klesnou na nulu.
+*   **Konec hry:** Hra končí výhrou, pokud hráč porazí všechny vlny nepřátel. V opačném případě hra končí porážkou, pokud životy hráče klesnou na nulu.
 
 ## 3. Strategický systém (Požadavek zadání)
 Hra obsahuje ekonomický systém založený na správě zdrojů:
@@ -18,5 +18,5 @@ Hra obsahuje ekonomický systém založený na správě zdrojů:
 ## 4. Technický rozsah:
 *   **Grafika:** Použití základních 2D tvarů (ColorRect / Sprite2D) z volně dostupných balíčků.
 *   **Úrovně:** Pouze 1 fixní mapa s 1 trasou.
-*   **Typy jednotek:** 1 typ věže (Základní střílna) a 3 typy neptřátel.
+*   **Typy jednotek:** 1 typ věže (Základní střílna) a 3 typy nepřátel.
 *   **Uživatelské rozhraní (UI):** Horní lišta zobrazující aktuální Zlato a Životy, tlačítko pro stavbu věží a text označující výhru nebo prohru.
