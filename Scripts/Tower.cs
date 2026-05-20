@@ -18,7 +18,9 @@ public partial class Tower : Node2D
 
         if (collisionShape.Shape is CircleShape2D circleShape)
         {
-            circleShape.Radius = _rangeRadius;
+            var uniqueShape = (CircleShape2D)circleShape.Duplicate();
+            uniqueShape.Radius = _rangeRadius;
+            collisionShape.Shape = uniqueShape;
         }
 
         rangeArea.AreaEntered += OnAreaEntered;
@@ -48,8 +50,7 @@ public partial class Tower : Node2D
     private void OnShootTimerTimeout()
     {
         _enemiesInRange.RemoveAll(enemy => !GodotObject.IsInstanceValid(enemy));
-        _enemiesInRange.RemoveAll(enemy => GlobalPosition.DistanceTo(enemy.GlobalPosition) > _rangeRadius);
-
+        
         if (_enemiesInRange.Count > 0)
         {
             // Aim at the first enemy in range

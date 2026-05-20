@@ -17,7 +17,6 @@ color = Color(0.3527627, 0.55275166, 1, 1)
 [node name="RangeArea" type="Area2D" parent="." unique_id=999359949]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RangeArea" unique_id=1139461376]
-scale = Vector2(20, 20)
 shape = SubResource("CircleShape2D_dnc73")
 
 [node name="ShootTimer" type="Timer" parent="." unique_id=1409960191]
