@@ -3,7 +3,7 @@ using System;
 
 public partial class TowerSlot : Button
 {
-    private PackedScene _towerScene = GD.Load<PackedScene>("res://Tower.tscn");
+    private PackedScene _towerScene = GD.Load<PackedScene>("res://tower.tscn");
     private int _towerPrice = 50;
 
     public override void _Ready()

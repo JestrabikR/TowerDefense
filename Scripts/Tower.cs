@@ -9,6 +9,8 @@ public partial class Tower : Node2D
 
     private float _rangeRadius = 150f;
 
+    private PackedScene _projectileScene = GD.Load<PackedScene>("res://projectile.tscn");
+
     public override void _Ready()
     {
         var rangeArea = GetNode<Area2D>("RangeArea");
@@ -56,7 +58,13 @@ public partial class Tower : Node2D
             // Aim at the first enemy in range
             var target = _enemiesInRange[0];
 
-            target.TakeDamage(_damage);
+            var projectileInstance = _projectileScene.Instantiate<Projectile>();
+
+            GetTree().CurrentScene.AddChild(projectileInstance);
+
+            projectileInstance.GlobalPosition = this.GlobalPosition;
+
+            projectileInstance.Setup(target, _damage);
 
             GD.Print("Shooting at enemy!");
         }
