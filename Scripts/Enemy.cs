@@ -5,6 +5,14 @@ public partial class Enemy : PathFollow2D
 {
     private float _speed = 150f;
     private int _health = 3;
+    private int _reward = 10;
+
+    public void Setup(int health, float speed, int reward)
+    {
+        _health = health;
+        _speed = speed;
+        _reward = reward;
+    }
 
     public override void _Process(double delta)
     {
@@ -25,7 +33,7 @@ public partial class Enemy : PathFollow2D
         if (_health <= 0)
         {
             var gameManager = (GameManager)GetTree().CurrentScene;
-            gameManager.AddGold(20);
+            gameManager.AddGold(_reward);
             QueueFree();
         }
     }
