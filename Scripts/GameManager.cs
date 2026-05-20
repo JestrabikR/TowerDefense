@@ -17,6 +17,8 @@ public partial class GameManager : Node2D
 
     private int _currentWaveIndex;
     private int _enemiesLeftToSpawn;
+    private int _activeEnemiesOnField;
+    private bool _allWavesSpawned;
 
     private Label _goldLabel;
     private Label _livesLabel;
@@ -50,12 +52,6 @@ public partial class GameManager : Node2D
 
     private async void StartPrepPhase()
     {
-        if (_currentWaveIndex >= _waves.Length)
-        {
-            _waveLabel.Text = "Konec hry - VÝHRA!";
-            return;
-        }
-
         var visualWaveNum = _currentWaveIndex + 1;
         _waveLabel.Text = $"Příprava na vlnu {visualWaveNum}/{_waves.Length} (10s)";
 
@@ -89,6 +85,7 @@ public partial class GameManager : Node2D
             enemyInstance.Setup(currentWave.EnemyHealth, currentWave.EnemySpeed, currentWave.EnemyReward);
             _enemyPath.AddChild(enemyInstance);
 
+            _activeEnemiesOnField++;
             _enemiesLeftToSpawn--;
         }
         else
@@ -96,7 +93,15 @@ public partial class GameManager : Node2D
             _spawnTimer.Stop();
             _currentWaveIndex++;
 
-            StartPrepPhase();
+            if (_currentWaveIndex >= _waves.Length)
+            {
+                _allWavesSpawned = true;
+                CheckWinCondition();
+            }
+            else
+            {
+                StartPrepPhase();
+            }
         }
     }
 
@@ -104,6 +109,20 @@ public partial class GameManager : Node2D
     {
         _gold += amount;
         UpdateUi();
+    }
+
+    public void EnemyRemoved()
+    {
+        _activeEnemiesOnField--;
+        CheckWinCondition();
+    }
+
+    private void CheckWinCondition()
+    {
+        if (_allWavesSpawned && _activeEnemiesOnField <= 0 && _lives > 0)
+        {
+            _waveLabel.Text = "Konec hry - VÝHRA!";
+        }
     }
 
     public void LoseLife()

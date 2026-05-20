@@ -22,6 +22,7 @@ public partial class Enemy : PathFollow2D
         {
             var gameManager = (GameManager)GetTree().CurrentScene;
             gameManager.LoseLife();
+            gameManager.EnemyRemoved();
 
             QueueFree(); // Remove Enemy from the scene
         }
@@ -34,6 +35,7 @@ public partial class Enemy : PathFollow2D
         {
             var gameManager = (GameManager)GetTree().CurrentScene;
             gameManager.AddGold(_reward);
+            gameManager.EnemyRemoved();
             QueueFree();
         }
     }
