@@ -5,14 +5,14 @@ public record WaveConfig(int NumberOfEnemies, int EnemyHealth, float EnemySpeed,
 
 public partial class GameManager : Node2D
 {
-    private int _gold = 100;
+    private int _gold = 85;
     private int _lives = 5;
 
     private readonly WaveConfig[] _waves =
     [
         new (NumberOfEnemies: 3,  EnemyHealth: 3, EnemySpeed: 100f, EnemyReward: 5, SpawnInterval: 3.0f),
-        new (NumberOfEnemies: 5,  EnemyHealth: 6, EnemySpeed: 120f, EnemyReward: 10, SpawnInterval: 2.5f),
-        new (NumberOfEnemies: 10, EnemyHealth: 5, EnemySpeed: 200f, EnemyReward: 15, SpawnInterval: 1.0f)
+        new (NumberOfEnemies: 5,  EnemyHealth: 5, EnemySpeed: 120f, EnemyReward: 15, SpawnInterval: 2.0f),
+        new (NumberOfEnemies: 8, EnemyHealth: 5, EnemySpeed: 200f, EnemyReward: 10, SpawnInterval: 1.5f)
     ];
 
     private int _currentWaveIndex;
