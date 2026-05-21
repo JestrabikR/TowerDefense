@@ -84,10 +84,10 @@ offset_bottom = 253.0
 script = ExtResource("2_0xm2m")
 
 [node name="Button3" type="Button" parent="SlotsContainer" unique_id=2057377566]
-offset_left = 882.0
-offset_top = 206.0
-offset_right = 932.0
-offset_bottom = 256.0
+offset_left = 884.0
+offset_top = 203.0
+offset_right = 934.0
+offset_bottom = 253.0
 script = ExtResource("2_0xm2m")
 
 [node name="Button5" type="Button" parent="SlotsContainer" unique_id=1046532139]
