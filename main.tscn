@@ -2,15 +2,22 @@
 
 [ext_resource type="Script" uid="uid://yfm6rtyf7leg" path="res://Scripts/GameManager.cs" id="1_ig7tw"]
 [ext_resource type="Script" uid="uid://dn45m64citsg0" path="res://Scripts/TowerSlot.cs" id="2_0xm2m"]
+[ext_resource type="Texture2D" uid="uid://dfrq8sldlvtyq" path="res://Assets/Tower-Defense-Game-Bg.jpg" id="2_h2yge"]
 
 [sub_resource type="Curve2D" id="Curve2D_ig7tw"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 1149, 405, 30.867683, 97.747665, -30.867683, -97.747665, 993, 311, 27.43794, 51.44614, -27.43794, -51.44614, 948, 152, 51.44614, -51.44614, -51.44614, 51.44614, 739, 141, 22.293327, -87.458435, -22.293327, 87.458435, 657, 349, 36.0123, -63.450237, -36.0123, 63.450237, 573, 570, 32.582554, 128.61534, -32.582554, -128.61534, 267, 553, 0, 0, 0, 0, 267, 553, 49.731266, 30.867683, -49.731266, -30.867683, 187, 289, 0, 0, 0, 0, 5, 290)
+"points": PackedVector2Array(0, 0, 0, 0, 1, 387, -25.454544, -50.90909, 25.454544, 50.90909, 77, 457, -32.727272, -30.545452, 32.727272, 30.545452, 125, 570, 0, 0, 0, 0, 220, 593, -37.090908, 9.454545, 37.090908, -9.454545, 644, 587, -34.181816, 18.90909, 34.181816, -18.90909, 710, 550, -37.090908, 0, 37.090908, 0, 916, 543, -13.818181, 24.727272, 13.818181, -24.727272, 995, 473, 17.454544, 22.545454, -17.454544, -22.545454, 987, 375, 23.272726, 17.454544, -23.272726, -17.454544, 875, 332, 10.90909, 23.999998, -10.90909, -23.999998, 806, 268, 26.181816, 25.454544, -26.181816, -25.454544, 764, 154, 25.454544, -15.272726, -25.454544, 15.272726, 633, 153, 25.454544, -24.727272, -25.454544, 24.727272, 582, 279, 37.090908, -6.545454, -37.090908, 6.545454, 504, 337, 31.999998, 6.545454, -31.999998, -6.545454, 251, 338, 32.727272, 21.090908, -32.727272, -21.090908, 176, 297, 0, 0, 0, 0, 2, 285)
 }
-point_count = 10
+point_count = 18
 
 [node name="Main" type="Node2D" unique_id=1421050145]
 script = ExtResource("1_ig7tw")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1381677871]
+position = Vector2(0, 62)
+scale = Vector2(1.6, 1.6029776)
+texture = ExtResource("2_h2yge")
+centered = false
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=220309768]
 
@@ -56,31 +63,52 @@ curve = SubResource("Curve2D_ig7tw")
 [node name="SlotsContainer" type="Node2D" parent="." unique_id=193589526]
 
 [node name="Button" type="Button" parent="SlotsContainer" unique_id=100906256]
-offset_left = 118.0
-offset_top = 310.0
-offset_right = 168.0
-offset_bottom = 360.0
+offset_left = 172.0
+offset_top = 457.0
+offset_right = 222.0
+offset_bottom = 507.0
 script = ExtResource("2_0xm2m")
 
 [node name="Button2" type="Button" parent="SlotsContainer" unique_id=1407704678]
-offset_left = 393.0
-offset_top = 496.0
-offset_right = 443.0
-offset_bottom = 546.0
+offset_left = 383.0
+offset_top = 630.0
+offset_right = 433.0
+offset_bottom = 680.0
 script = ExtResource("2_0xm2m")
 
 [node name="Button4" type="Button" parent="SlotsContainer" unique_id=197265491]
-offset_left = 546.0
-offset_top = 276.0
-offset_right = 596.0
-offset_bottom = 326.0
+offset_left = 433.0
+offset_top = 203.0
+offset_right = 483.0
+offset_bottom = 253.0
 script = ExtResource("2_0xm2m")
 
 [node name="Button3" type="Button" parent="SlotsContainer" unique_id=2057377566]
-offset_left = 804.0
-offset_top = 180.0
-offset_right = 854.0
-offset_bottom = 230.0
+offset_left = 882.0
+offset_top = 206.0
+offset_right = 932.0
+offset_bottom = 256.0
+script = ExtResource("2_0xm2m")
+
+[node name="Button5" type="Button" parent="SlotsContainer" unique_id=1046532139]
+offset_left = 853.0
+offset_top = 396.0
+offset_right = 903.0
+offset_bottom = 446.0
+script = ExtResource("2_0xm2m")
+
+[node name="Button6" type="Button" parent="SlotsContainer" unique_id=1751058058]
+offset_left = 736.0
+offset_top = 581.0
+offset_right = 786.0
+offset_bottom = 631.0
+script = ExtResource("2_0xm2m")
+
+[node name="Button7" type="Button" parent="SlotsContainer" unique_id=1893196494]
+offset_left = 671.0
+offset_top = 190.0
+offset_right = 721.0
+offset_bottom = 240.0
 script = ExtResource("2_0xm2m")
 
 [node name="SpawnTimer" type="Timer" parent="." unique_id=840533653]
