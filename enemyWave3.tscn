@@ -87,7 +87,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 32.0
+"speed": 40.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_77cib"]
@@ -99,8 +99,8 @@ size = Vector2(35, 45)
 position = Vector2(4, -1)
 scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_m36s6")
-frame = 3
-frame_progress = 0.9450191
+frame = 12
+frame_progress = 0.8792594
 
 [node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(1083413399) index="0" unique_id=1225153621]
 position = Vector2(-0.5, 1.5)

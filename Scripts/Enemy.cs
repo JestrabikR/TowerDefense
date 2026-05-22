@@ -21,6 +21,14 @@ public partial class Enemy : PathFollow2D
 
         _healthBar.MaxValue = health;
         _healthBar.Value = health;
+
+        var fillStyle = new StyleBoxFlat();
+        fillStyle.BgColor = new Color(0.9f, 0.1f, 0.1f);
+        _healthBar.AddThemeStyleboxOverride("fill", fillStyle);
+
+        var bgStyle = new StyleBoxFlat();
+        bgStyle.BgColor = new Color(0.2f, 0.0f, 0.0f);
+        _healthBar.AddThemeStyleboxOverride("background", bgStyle);
     }
 
     public override void _Process(double delta)
@@ -66,5 +74,8 @@ public partial class Enemy : PathFollow2D
 
         // Counter rotate so health bar stays horizontal
         _healthBar.Rotation = -Rotation;
+
+        // Static position relative to enemy
+        _healthBar.GlobalPosition = GlobalPosition + new Vector2(-16, -25);
     }
 }

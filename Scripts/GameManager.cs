@@ -60,7 +60,7 @@ public partial class GameManager : Node2D
 
     private void StartPrepPhase()
     {
-        _secondsRemaining = 10;
+        _secondsRemaining = 7;
         _countdownTimer.Start();
         UpdateCountdownDisplay();
     }
