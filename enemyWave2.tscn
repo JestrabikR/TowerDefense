@@ -94,7 +94,14 @@ animations = [{
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=590698253]
 position = Vector2(4, -2)
-scale = Vector2(0.14, 0.14)
+scale = Vector2(0.24, 0.24)
 sprite_frames = SubResource("SpriteFrames_8hsa4")
 frame = 19
 frame_progress = 0.91792506
+
+[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(1083413399) index="0" unique_id=1225153621]
+position = Vector2(-1.5, 1.75)
+
+[node name="HealthBar" parent="." index="2" unique_id=1543817168]
+offset_top = 32.0
+offset_bottom = 36.0

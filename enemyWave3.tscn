@@ -90,9 +90,22 @@ animations = [{
 "speed": 32.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_77cib"]
+size = Vector2(35, 45)
+
 [node name="Enemy" unique_id=231052880 instance=ExtResource("1_v56x1")]
 
 [node name="AnimatedSprite2D" parent="." index="0" unique_id=590698253]
-position = Vector2(5, -1)
-scale = Vector2(0.16, 0.16)
+position = Vector2(4, -1)
+scale = Vector2(0.22, 0.22)
 sprite_frames = SubResource("SpriteFrames_m36s6")
+frame = 3
+frame_progress = 0.9450191
+
+[node name="CollisionShape2D" parent="Hitbox" parent_id_path=PackedInt32Array(1083413399) index="0" unique_id=1225153621]
+position = Vector2(-0.5, 1.5)
+shape = SubResource("RectangleShape2D_77cib")
+
+[node name="HealthBar" parent="." index="2" unique_id=1543817168]
+offset_top = 26.0
+offset_bottom = 30.0
