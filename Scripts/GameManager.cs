@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public record WaveConfig(int NumberOfEnemies, int EnemyHealth, float EnemySpeed, int EnemyReward, float SpawnInterval);
+public record WaveConfig(int NumberOfEnemies, int EnemyHealth, float EnemySpeed, int EnemyReward, float SpawnInterval, string EnemyScenePath);
 
 public partial class GameManager : Node2D
 {
@@ -10,9 +10,9 @@ public partial class GameManager : Node2D
 
     private readonly WaveConfig[] _waves =
     [
-        new (NumberOfEnemies: 3,  EnemyHealth: 3, EnemySpeed: 100f, EnemyReward: 5, SpawnInterval: 3.0f),
-        new (NumberOfEnemies: 5,  EnemyHealth: 5, EnemySpeed: 120f, EnemyReward: 15, SpawnInterval: 2.0f),
-        new (NumberOfEnemies: 8, EnemyHealth: 5, EnemySpeed: 200f, EnemyReward: 10, SpawnInterval: 1.5f)
+        new (NumberOfEnemies: 3,  EnemyHealth: 3, EnemySpeed: 100f, EnemyReward: 5, SpawnInterval: 3.0f, EnemyScenePath: "res://enemy.tscn"),
+        new (NumberOfEnemies: 5,  EnemyHealth: 5, EnemySpeed: 120f, EnemyReward: 15, SpawnInterval: 2.0f, EnemyScenePath: "res://enemyWave2.tscn"),
+        new (NumberOfEnemies: 8, EnemyHealth: 5, EnemySpeed: 200f, EnemyReward: 10, SpawnInterval: 1.5f, EnemyScenePath: "res://enemyWave2.tscn")
     ];
 
     private int _currentWaveIndex;
@@ -25,7 +25,7 @@ public partial class GameManager : Node2D
     private Label _livesLabel;
     private Label _waveLabel;
 
-    private PackedScene _enemyScene = GD.Load<PackedScene>("res://enemy.tscn");
+    private PackedScene _enemyScene;
     private Path2D _enemyPath;
 
     private Timer _spawnTimer;
@@ -107,7 +107,9 @@ public partial class GameManager : Node2D
         {
             var currentWave = _waves[_currentWaveIndex];
 
-            var enemyInstance = _enemyScene.Instantiate<Enemy>();
+            var enemyScene = GD.Load<PackedScene>(currentWave.EnemyScenePath);
+
+            var enemyInstance = enemyScene.Instantiate<Enemy>();
             
             enemyInstance.Setup(currentWave.EnemyHealth, currentWave.EnemySpeed, currentWave.EnemyReward);
             _enemyPath.AddChild(enemyInstance);
