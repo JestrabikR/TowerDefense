@@ -10,7 +10,7 @@ public partial class GameManager : Node2D
 
     private readonly WaveConfig[] _waves =
     [
-        new (NumberOfEnemies: 3,  EnemyHealth: 3, EnemySpeed: 100f, EnemyReward: 5, SpawnInterval: 3.0f, EnemyScenePath: "res://enemy.tscn"),
+        new (NumberOfEnemies: 4,  EnemyHealth: 3, EnemySpeed: 100f, EnemyReward: 5, SpawnInterval: 2.5f, EnemyScenePath: "res://enemy.tscn"),
         new (NumberOfEnemies: 6,  EnemyHealth: 5, EnemySpeed: 120f, EnemyReward: 15, SpawnInterval: 2.0f, EnemyScenePath: "res://enemyWave2.tscn"),
         new (NumberOfEnemies: 8, EnemyHealth: 3, EnemySpeed: 200f, EnemyReward: 10, SpawnInterval: 1.5f, EnemyScenePath: "res://enemyWave3.tscn")
     ];
@@ -32,6 +32,8 @@ public partial class GameManager : Node2D
     private Timer _countdownTimer;
     private int _secondsRemaining;
 
+    private Button _playAgainButton;
+
     public override void _Ready()
     {
         _goldLabel = GetNode<Label>("%GoldLabel");
@@ -47,6 +49,10 @@ public partial class GameManager : Node2D
         _countdownTimer.WaitTime = 1.0;
         _countdownTimer.Timeout += OnCountdownTimerTimeout;
 
+        _playAgainButton = GetNode<Button>("%PlayAgainButton");
+        _playAgainButton.Pressed += OnPlayAgainButtonPressed;
+        _playAgainButton.Visible = false;
+
         UpdateUi();
 
         StartPrepPhase();
@@ -56,6 +62,12 @@ public partial class GameManager : Node2D
     {
         _goldLabel.Text = $"Zlato: {_gold}";
         _livesLabel.Text = $"Životy: {_lives}";
+    }
+    private void OnPlayAgainButtonPressed()
+    {
+        GetTree().Paused = false;
+
+        GetTree().ReloadCurrentScene();
     }
 
     private void StartPrepPhase()
@@ -164,6 +176,7 @@ public partial class GameManager : Node2D
         if (_allWavesSpawned && _activeEnemiesOnField <= 0 && _lives > 0)
         {
             _waveLabel.Text = "Konec hry - VÝHRA!";
+            _playAgainButton.Visible = true;
         }
     }
 
@@ -176,6 +189,7 @@ public partial class GameManager : Node2D
         {
             _waveLabel.Text = "Konec hry - PROHRA!";
             GetTree().Paused = true;
+            _playAgainButton.Visible = true;
         }
     }
 
