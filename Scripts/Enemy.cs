@@ -8,6 +8,7 @@ public partial class Enemy : PathFollow2D
     private int _reward = 10;
 
     private ProgressBar _healthBar;
+    private AnimatedSprite2D _sprite;
 
     public void Setup(int health, float speed, int reward)
     {
@@ -16,6 +17,7 @@ public partial class Enemy : PathFollow2D
         _reward = reward;
 
         _healthBar = GetNode<ProgressBar>("HealthBar");
+        _sprite = GetNode<AnimatedSprite2D>("AnimatedSprite2D");
 
         _healthBar.MaxValue = health;
         _healthBar.Value = health;
@@ -24,6 +26,8 @@ public partial class Enemy : PathFollow2D
     public override void _Process(double delta)
     {
         Progress += _speed * (float)delta;
+
+        HandleCorrectRotation();
 
         if (ProgressRatio >= 0.99f)
         {
@@ -51,5 +55,16 @@ public partial class Enemy : PathFollow2D
             gameManager.EnemyRemoved();
             QueueFree();
         }
+    }
+
+    private void HandleCorrectRotation()
+    {
+        // Use the travel direction vector - negative X means going left
+        _sprite.FlipH = GlobalTransform.X.X < 0;
+
+        _sprite.GlobalRotation = 0;
+
+        // Counter rotate so health bar stays horizontal
+        _healthBar.Rotation = -Rotation;
     }
 }
