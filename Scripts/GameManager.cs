@@ -19,6 +19,7 @@ public partial class GameManager : Node2D
     private int _enemiesLeftToSpawn;
     private int _activeEnemiesOnField;
     private bool _allWavesSpawned;
+    private bool _waveSpawningFinished;
 
     private Label _goldLabel;
     private Label _livesLabel;
@@ -28,6 +29,8 @@ public partial class GameManager : Node2D
     private Path2D _enemyPath;
 
     private Timer _spawnTimer;
+    private Timer _countdownTimer;
+    private int _secondsRemaining;
 
     public override void _Ready()
     {
@@ -38,6 +41,11 @@ public partial class GameManager : Node2D
 
         _spawnTimer = GetNode<Timer>("%SpawnTimer");
         _spawnTimer.Timeout += OnSpawnTimerTimeout;
+
+        _countdownTimer = new Timer();
+        AddChild(_countdownTimer);
+        _countdownTimer.WaitTime = 1.0;
+        _countdownTimer.Timeout += OnCountdownTimerTimeout;
 
         UpdateUi();
 
@@ -50,14 +58,33 @@ public partial class GameManager : Node2D
         _livesLabel.Text = $"Životy: {_lives}";
     }
 
-    private async void StartPrepPhase()
+    private void StartPrepPhase()
+    {
+        _secondsRemaining = 10;
+        _countdownTimer.Start();
+        UpdateCountdownDisplay();
+    }
+
+    private void UpdateCountdownDisplay()
     {
         var visualWaveNum = _currentWaveIndex + 1;
-        _waveLabel.Text = $"Příprava na vlnu {visualWaveNum}/{_waves.Length} (10s)";
+        _waveLabel.Text = $"Příprava na vlnu {visualWaveNum}/{_waves.Length} ({_secondsRemaining}s)";
+    }
 
-        await ToSignal(GetTree().CreateTimer(10.0), "timeout");
+    private void OnCountdownTimerTimeout()
+    {
+        _secondsRemaining--;
 
-        StartWave();
+        if (_secondsRemaining >= 0)
+        {
+            UpdateCountdownDisplay();
+        }
+
+        if (_secondsRemaining < 0)
+        {
+            _countdownTimer.Stop();
+            StartWave();
+        }
     }
 
     private void StartWave()
@@ -100,7 +127,13 @@ public partial class GameManager : Node2D
             }
             else
             {
-                StartPrepPhase();
+                _waveSpawningFinished = true;
+                
+                if (_activeEnemiesOnField == 0)
+                {
+                    _waveSpawningFinished = false;
+                    StartPrepPhase();
+                }
             }
         }
     }
@@ -114,6 +147,13 @@ public partial class GameManager : Node2D
     public void EnemyRemoved()
     {
         _activeEnemiesOnField--;
+
+        if (_waveSpawningFinished && _activeEnemiesOnField == 0 && _currentWaveIndex < _waves.Length)
+        {
+            _waveSpawningFinished = false;
+            StartPrepPhase();
+        }
+
         CheckWinCondition();
     }
 
@@ -146,5 +186,10 @@ public partial class GameManager : Node2D
             return true;
         }
         return false;
+    }
+
+    public override void _ExitTree()
+    {
+        _countdownTimer?.QueueFree();
     }
 }
