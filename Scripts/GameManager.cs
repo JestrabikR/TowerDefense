@@ -12,7 +12,7 @@ public partial class GameManager : Node2D
     [
         new (NumberOfEnemies: 3,  EnemyHealth: 3, EnemySpeed: 100f, EnemyReward: 5, SpawnInterval: 3.0f, EnemyScenePath: "res://enemy.tscn"),
         new (NumberOfEnemies: 5,  EnemyHealth: 5, EnemySpeed: 120f, EnemyReward: 15, SpawnInterval: 2.0f, EnemyScenePath: "res://enemyWave2.tscn"),
-        new (NumberOfEnemies: 8, EnemyHealth: 5, EnemySpeed: 200f, EnemyReward: 10, SpawnInterval: 1.5f, EnemyScenePath: "res://enemyWave2.tscn")
+        new (NumberOfEnemies: 8, EnemyHealth: 5, EnemySpeed: 200f, EnemyReward: 10, SpawnInterval: 1.5f, EnemyScenePath: "res://enemyWave3.tscn")
     ];
 
     private int _currentWaveIndex;
